@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Comparison</title>
+    <style></style>
+</head>
+<body>
+    <div>
+        <label for="oldFile">Old Translated File:</label>
+        <input type="file" id="oldFile" accept=".idres">
+    </div>
+    <div>
+        <label for="newFile">New Untranslated File:</label>
+        <input type="file" id="newFile" accept=".idres">
+    </div>
+    <button id="compareButton">Compare Files</button>
+    <button id="downloadButton" disabled>Download Differences</button>
+
+    <div class="showDiffLines"></div>
+    <script src="Comparer.js"></script>
+    <script src="ComparerViewModel.js"></script>
+</body>
+</html>
