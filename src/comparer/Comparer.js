@@ -6,7 +6,7 @@
 - The returned file contain all the lines that "Doesn't appeared in the translated one (1st)""
 - The user then push all lines in the returned file into the 1st file and begin translation.
 */
-
+z
 
 class Comparer {
     constructor(){
@@ -28,12 +28,14 @@ class Comparer {
 
         this.content1.forEach(line => {
             const key = line.split('=')[0];
-            this.keysSet.add(key);
+            const trimmedKey = key.trim();
+            this.keysSet.add(trimmedKey);
         });
 
         this.content2.forEach(line => {
             const key = line.split('=')[0];
-            if (!this.keysSet.has(key)) {
+            const trimmedKey = key.trim();
+            if (!this.keysSet.has(trimmedKey)) {
                 this.differences.push(line);
             }
         });
@@ -57,7 +59,7 @@ class Comparer {
         --------------------------
         9yin translator helper; made by Vajra Pokaew, 2023
         
-        Please put the following lines into your *Old English Translated .idres file* and start translation
+        Please put the following lines into your *Old English Translated ${this.inputFileName}.idres file* and start translation
         
         ------------------------------`;
 
@@ -67,8 +69,7 @@ class Comparer {
         .filter(line => line !== '')
         .join('\n');
 
-        const filename = `${this.inputFileName.replace('.idres', '_diff.idres')}`;
-    
+        const filename = `${this.inputFileName.replace('.idres', '_diff.idres')}`;    
         const blob = new Blob([differencesText], { type: 'text/plain' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
