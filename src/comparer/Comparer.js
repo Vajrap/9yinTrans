@@ -35,6 +35,23 @@ class Comparer {
         newReader.readAsText(file);
     }
 
+    getOldTranslatedFolderInput(folder){
+        for (const file of folder.files) {
+            if (file.type === 'text/plain') {
+                this.getOldTranslatedFileInput(file);
+            }
+        }
+    }
+
+    getNewUntranslatedFolderInput(folder){
+        for (const file of folder.files) {
+            if (file.type === 'text/plain') {
+                this.getNewUntranslatedFileInput(file);
+            }        
+        }
+    }
+
+
     // getFilesInput(oldTranslatedFile, newUntranslatedFile){
     //     const reader1 = new FileReader();
     //     reader1.onload = () => {
@@ -86,7 +103,7 @@ class Comparer {
         --------------------------
         9yin translator helper; made by Vajra Pokaew, 2023
         
-        Please put the following lines into your *Old English Translated file* (**${this.inputFileName}**) and start translation
+        Please translate these lines and put the following lines into your *Old English Translated file* (**${this.inputFileName}**).
         
         ------------------------------`;
 
