@@ -6,33 +6,58 @@
 - The returned file contain all the lines that "Doesn't appeared in the translated one (1st)""
 - The user then push all lines in the returned file into the 1st file and begin translation.
 */
-z
 
 class Comparer {
     constructor(){
         this.inputFileName = ''
-        this.content1 = [];
-        this.content2 = [];
+        this.oldContent = [];
+        this.newContent = [];
         this.keysSet = new Set();
         this.differences = [];
     }
 
-    getFilesInput(oldTranslatedFile, newUntranslatedFile){
-        this.content1 = oldTranslatedFile.split('\n');
-        this.content2 = newUntranslatedFile.split('\n');
+    getOldTranslatedFileInput(file){
+        const oldReader = new FileReader();
+        oldReader.onload = () => {
+            this.oldContent = oldReader.result.split('\n')
+        }
+        oldReader.readAsText(file);
     }
+
+    getNewUntranslatedFileInput(file){
+        const newReader = new FileReader();
+        newReader.onload = () => {
+            this.inputFileName = file.name;
+            this.newContent = newReader.result.split('\n')
+        }
+        newReader.readAsText(file);
+    }
+
+    // getFilesInput(oldTranslatedFile, newUntranslatedFile){
+    //     const reader1 = new FileReader();
+    //     reader1.onload = () => {
+    //         this.content1 = reader1.result.split('\n');
+    //     };
+    //     reader1.readAsText(oldTranslatedFile);
+        
+    //     const reader2 = new FileReader();
+    //     reader2.onload = () => {            
+    //         this.content2 = reader2.result.split('\n');
+    //     };
+    //     reader2.readAsText(newUntranslatedFile);
+    // }
 
     processFileContent() {
         this.keysSet = new Set();
         this.differences = [];
 
-        this.content1.forEach(line => {
+        this.oldContent.forEach(line => {
             const key = line.split('=')[0];
             const trimmedKey = key.trim();
             this.keysSet.add(trimmedKey);
         });
 
-        this.content2.forEach(line => {
+        this.newContent.forEach(line => {
             const key = line.split('=')[0];
             const trimmedKey = key.trim();
             if (!this.keysSet.has(trimmedKey)) {
@@ -46,8 +71,8 @@ class Comparer {
     }
 
     clear(){
-        this.content1 = [];
-        this.content2 = [];
+        this.oldContent = [];
+        this.newContent = [];
         this.keysSet = new Set();
         this.differences = [];
     }
@@ -77,3 +102,5 @@ class Comparer {
         link.click();
     }    
 }
+
+const comparer = new Comparer()

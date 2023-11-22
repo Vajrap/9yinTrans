@@ -1,24 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const comparer = new Comparer();
 
     document.getElementById('oldFile').addEventListener('change', (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-            comparer.getFilesInput(reader.result, comparer.content2.join('\n'));
-        };
-        reader.readAsText(file);
+        comparer.getOldTranslatedFileInput(file);
+ 
     });
 
     document.getElementById('newFile').addEventListener('change', (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-            comparer.getFilesInput(comparer.content1.join('\n'), reader.result);
-
-            comparer.inputFileName = file.name;
-        };
-        reader.readAsText(file);
+        comparer.getNewUntranslatedFileInput(file);
     });
 
     document.getElementById('compareButton').addEventListener('click', () => {
