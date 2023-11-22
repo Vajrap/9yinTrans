@@ -17,6 +17,7 @@ class Comparer {
     }
 
     getOldTranslatedFileInput(file){
+        this.oldContent = []
         const oldReader = new FileReader();
         oldReader.onload = () => {
             this.oldContent = oldReader.result.split('\n')
@@ -25,6 +26,7 @@ class Comparer {
     }
 
     getNewUntranslatedFileInput(file){
+        this.newContent = []
         const newReader = new FileReader();
         newReader.onload = () => {
             this.inputFileName = file.name;
@@ -84,7 +86,7 @@ class Comparer {
         --------------------------
         9yin translator helper; made by Vajra Pokaew, 2023
         
-        Please put the following lines into your *Old English Translated ${this.inputFileName}.idres file* and start translation
+        Please put the following lines into your *Old English Translated file* (**${this.inputFileName}**) and start translation
         
         ------------------------------`;
 
