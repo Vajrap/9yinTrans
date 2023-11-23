@@ -35,6 +35,23 @@ class Comparer {
         newReader.readAsText(file);
     }
 
+    getOldTranslatedFolderInput(folder){
+        for (const file of folder.files) {
+            if (file.type === 'text/plain') {
+                this.getOldTranslatedFileInput(file);
+            }
+        }
+    }
+
+    getNewUntranslatedFolderInput(folder){
+        for (const file of folder.files) {
+            if (file.type === 'text/plain') {
+                this.getNewUntranslatedFileInput(file);
+            }        
+        }
+    }
+
+
     // getFilesInput(oldTranslatedFile, newUntranslatedFile){
     //     const reader1 = new FileReader();
     //     reader1.onload = () => {
