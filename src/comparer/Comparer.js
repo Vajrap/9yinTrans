@@ -35,20 +35,6 @@ class Comparer {
         newReader.readAsText(file);
     }
 
-    // getFilesInput(oldTranslatedFile, newUntranslatedFile){
-    //     const reader1 = new FileReader();
-    //     reader1.onload = () => {
-    //         this.content1 = reader1.result.split('\n');
-    //     };
-    //     reader1.readAsText(oldTranslatedFile);
-        
-    //     const reader2 = new FileReader();
-    //     reader2.onload = () => {            
-    //         this.content2 = reader2.result.split('\n');
-    //     };
-    //     reader2.readAsText(newUntranslatedFile);
-    // }
-
     processFileContent() {
         this.keysSet = new Set();
         this.differences = [];
