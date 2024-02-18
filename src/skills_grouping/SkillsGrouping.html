@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Grouping Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Skill Grouping Tool</h1>
+        To use<br>
+        1. Select skill_desc.idres extracted from your 9yin/res/text.package<br>
+        2. Click on 'Process File' this is an extra step added since I'm too lazy to use async await, so wait for a couple seconds after clicked.<br>
+        3. Click on 'Populate Group Lines' and wait a couple seconds, until it said 'Done!'<br>
+        4. Click on 'Download Processed File', Boom! you got the file.<br>
+        <br>
+        <br>
+        <input type="file" id="fileInput" />
+        <button id="processFile">Process File</button>
+        <button id="populateGroupLines">Populate Group Lines</button>
+        <button id="downloadFile">Download Processed File</button>
+    </div>
+    <script src="SkillsGrouping.js"></script>
+    <script src="SkillsGroupingViewBinder.js"></script>
+</body>
+</html>
