@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <label for="oldFile">Old Translated Files: ไฟล์ภาษาอังกฤษที่ใช้อยู่ก่อนอัพเดทแพทซ์</label> 
+        <input type="file" id="oldFile" accept=".idres" multiple>
+    </div>
+    <div>
+        <label for="newFile">New Untranslated Files: ไฟล์ภาษาจีนที่อัพเดทมาพร้อมแพทซ์ใหม่</label>
+        <input type="file" id="newFile" accept=".idres" multiple>
+    </div>
+    <br>
+    ทั้งสองต้องเป็นไฟล์ .idres ที่ได้จากการแตก text.package หลังจากเลือกไฟล์ทั้งสองแล้ว คลิกปุ่ม compare เพื่อดูรายการข้อความใหม่<br> จากนั้นกดปุ่ม download เพื่อดาวน์โหลด
+    แล้วจะได้ไฟล์ _diff.idres ให้นำไปใส่ไว้ท้ายไฟล์ภาษาอังกฤษที่ใช้อยู่ก่อนอัพเดทแพทซ์แล้วแปลจากบรรทัดนั้น<br>
+    <br>
+    <button id="compareButton">Compare Files</button>
+    <button id="downloadButton" disabled>Download Differences</button>
+    <div class="showDiffLines"></div>
+    <script src="MultiComparer.js"></script>
+    <script src="MultiFileComparerViewModel.js"></script>
+   </body>
+</html>
