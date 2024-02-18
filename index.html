@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9Yin App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="src/worktable/Resources.js"></script>
+    <script src="src/worktable/Tailor.js"></script>
+    <script src="src/worktable/worktable.js"></script>
+    <script src="src/characterbuilding/SchoolName.js"></script>
+    <script src="src/characterbuilding/CharacterBuilderViewModel.js"></script>
+    <script src="src/comparer/MultiComparer.js"></script>
+    <script src="src/comparer/MultiFileComparerViewModel.js"></script>
+    <script src="src/skills_grouping/SkillsGrouping.js"></script>
+    <script src="src/skills_grouping/SkillsGroupingViewBinder.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>9Yin App</h1>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('characterBuilding')">CharacterBuilding</a></li>
+            <li><a href="#" onclick="showSection('worktable')">Worktable</a></li>
+            <li><a href="#" onclick="showSection('fnc2')">Function 2 (Fnc2)</a></li>
+            <li><a href="#" onclick="showSection('fnc3')">Function 3 (Fnc3)</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home">
+    <h2>Home</h2>
+    <p>This is the Home section.</p>
+</section>
+
+<section id="characterBuilding" style="display: none;">
+    <h2>CharacterBuilding</h2>
+    <div id="internal-school-select">
+        <div id="main-school">
+          Twelves Schools
+          <button name="shaolin" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Shaolin</button>
+          <button name="wudang" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Wudang</button>
+          <button name="emei" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Emei</button>
+          <button name="beggar" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Beggar's sect</button>
+          <button name="scholar" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Scholars</button>
+          <button name="tang" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Tangmen</button>
+          <button name="royalGuard" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Royal guards</button>
+          <button name="wanderer" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Wanderer's Valley</button>
+          <button name="ming" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Ming Cult</button>
+          <button name="tianshan" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Tianshan Sect</button>
+          <button name="kunlun" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Kunlun Sect</button>
+          <button name="xingtian" schooltype="school" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Xingtian</button>
+        </div>
+        <div id="reclusive">
+          Reclusive Sects
+          <button name="dharma" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Dharma Sect</button>
+          <button name="ancientTomb" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Ancient Tomb</button>
+          <button name="divineWater" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Divine Water</button>
+          <button name="changfeng" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Changfeng Escort</button>
+          <button name="mountHua" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Mount Hua</button>
+          <button name="nianluo" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Nianluo</button>
+          <button name="bloodBlade" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Blood Blade</button>
+          <button name="fivePoisons" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Five Poisons</button>
+          <button name="shenji" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Shenji Camp</button>
+          <button name="starryPavillion" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Starry Pavillion</button>
+          <button name="tianya" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Tianya voyage</button>
+          <button name="wanghui" schooltype="reclusive" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Wanghui zhou</button>
+        </div>
+        <div id="faction">
+          Factions
+          <button name="xu" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Xu family</button>
+          <button name="shen" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Shen family</button>
+          <button name="hundredBeast" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Hundred beast</button>
+          <button name="peachBlossom" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Peach Blossom Island</button>
+          <button name="rootless" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Rootless Sect</button>
+          <button name="movingFlower" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Moving Flower Palace</button>
+          <button name="tianlun" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Tianlun temple</button>
+          <button name="qingyi" schooltype="faction" onclick="characterBuilderVM.selectSchool(this.name, this.getAttribute('schooltype'))">Qingyi pavillion</button>
+        </div>
+    </div>
+
+    <div id="internalTypeSelect">
+
+    </div>
+    
+    <div id="internalDetails">
+
+        
+    </div>
+</section>
+
+<section id="worktable" style="display: none;">
+    <h2>Worktable</h2>
+    <div id="tailor-items">
+        <!--dynamic content will be added when loaded-->
+    </div>
+    <section id="player-helper" style="display: block;">
+        <!-- The player helper content will be dynamically added here -->
+    </section>
+    <script>
+        renderTailor()
+    </script>
+</section>
+
+<section id="fnc2" style="display: none;">
+    <h2>Function 2 (Fnc2)</h2>
+    <p>This is the Function 2 section.</p>
+</section>
+
+<section id="fnc3" style="display: none;">
+    <h2>Function 3 (Fnc3)</h2>
+    <p>This is the Function 3 section.</p>
+</section>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(sectionId);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
