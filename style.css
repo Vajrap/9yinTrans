@@ -29,6 +29,12 @@ nav a {
     color: #fff;
 }
 
+.iframe {
+    width: 100%; /* Responsive width */
+    height: 80vh; /* Fixed height, but you can make it responsive as well */
+    border: none; /* Optional: removes the default frame border */
+  }
+
 .tooltip {
     display: none;
     position: absolute;
@@ -39,14 +45,14 @@ nav a {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.tailor-item {
+.item {
     display: inline-block;
     vertical-align: top;
     margin-right: 20px; /* Adjust as needed for spacing between items */
     margin-bottom: 20px;
-    width: 150px; /* Fixed width for each item */
-    height: 150px;
-    background-color: #e00000; /* Background color for each item, adjust as needed */
+    width: 6vw; /* Fixed width for each item */
+    height: 10vh;
+    background-color: #898989; /* Background color for each item, adjust as needed */
     padding: 10px;
     font-size: 15px;
 }

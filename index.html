@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="src/worktable/Resources.js"></script>
     <script src="src/worktable/Tailor.js"></script>
+    <script src="src/worktable/Accessory.js"></script>
     <script src="src/worktable/worktable.js"></script>
     <script src="src/characterbuilding/SchoolName.js"></script>
     <script src="src/characterbuilding/CharacterBuilderViewModel.js"></script>
@@ -24,8 +25,8 @@
             <li><a href="#" onclick="showSection('home')">Home</a></li>
             <li><a href="#" onclick="showSection('characterBuilding')">CharacterBuilding</a></li>
             <li><a href="#" onclick="showSection('worktable')">Worktable</a></li>
-            <li><a href="#" onclick="showSection('fnc2')">Function 2 (Fnc2)</a></li>
-            <li><a href="#" onclick="showSection('fnc3')">Function 3 (Fnc3)</a></li>
+            <li><a href="#" onclick="showSection('translation_comparer')">Translation: Comparer</a></li>
+            <li><a href="#" onclick="showSection('translation_skillGrouping')">Translation: Skill Grouping</a></li>
         </ul>
     </nav>
 </header>
@@ -93,25 +94,23 @@
 
 <section id="worktable" style="display: none;">
     <h2>Worktable</h2>
-    <div id="tailor-items">
+    <div id="items">
         <!--dynamic content will be added when loaded-->
     </div>
     <section id="player-helper" style="display: block;">
         <!-- The player helper content will be dynamically added here -->
     </section>
     <script>
-        renderTailor()
+        renderItem()
     </script>
 </section>
 
-<section id="fnc2" style="display: none;">
-    <h2>Function 2 (Fnc2)</h2>
-    <p>This is the Function 2 section.</p>
+<section id="translation_comparer" style="display: none;">
+    <iframe class ="iframe" src="/src/comparer/Comparer.html"></iframe> 
 </section>
 
-<section id="fnc3" style="display: none;">
-    <h2>Function 3 (Fnc3)</h2>
-    <p>This is the Function 3 section.</p>
+<section id="translation_skillGrouping" style="display: none;">
+    <iframe class ="iframe" src="/src/skills_grouping/SkillsGrouping.html"></iframe>
 </section>
 
 <script>

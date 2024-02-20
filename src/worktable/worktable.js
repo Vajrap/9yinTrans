@@ -1,76 +1,98 @@
 const itemStates = [];
 
-function renderTailor() {
+function renderItem() {
     const tailorItems = [
         hair_accessory1,
         top1,
         bottom1,
         boots1,
         shinguard1,
-        wristguard1
+        wristguard1,
+        hair_accessory2,
+        top2,
+        bottom2,
+        boots2,
+        shinguard2,
+        wristguard2
     ]
 
-    const tailorItemsContainer = document.getElementById("tailor-items");
-    tailorItems.forEach(item => {
-        const itemElement = document.createElement("div");
-        itemElement.classList.add("tailor-item");
+    const accessoriesItems = [
+        earring1,
+        earring2,
+        ring1,
+        ring2,
+        necklace1,
+        necklace2
+    ]
 
-        // Display the equipment name as a string (placeholder for images)
-        itemElement.innerHTML = `<h3>${item.name}</h3>`;
+    const items = [
+        tailorItems,
+        accessoriesItems
+    ]
 
-        // Create buttons for incrementing and decrementing the count
-        const countContainer = document.createElement("div");
-        countContainer.classList.add("count-container");
-
-        const decrementButton = document.createElement("button");
-        decrementButton.innerHTML = "-";
-        decrementButton.addEventListener("click", () => decrementCount(item));
-        countContainer.appendChild(decrementButton);
-
-        const countDisplay = document.createElement("span");
-        countDisplay.innerText = "0"; // Initial count
-        countContainer.appendChild(countDisplay);
-
-        const incrementButton = document.createElement("button");
-        incrementButton.innerHTML = "+";
-        incrementButton.addEventListener("click", () => incrementCount(item));
-        countContainer.appendChild(incrementButton);
-
-        itemElement.appendChild(countContainer);
-
-        // Create a floating tooltip for resource items
-        const tooltip = document.createElement("div");
-        tooltip.classList.add("tooltip");
-        itemElement.appendChild(tooltip);
-
-        item.resourceNeeded.forEach(resource => {
-            const resourceName = resource.resource.name;
-            const resourceQuantity = resource.quantity;
-            const resourceObtain = resource.resource.obtain;
-            const resourceItem = document.createElement("div");
-            resourceItem.innerHTML = `${resourceQuantity} * ${resourceName} : from -> ${resourceObtain}`;
-            tooltip.appendChild(resourceItem);
-        });
-
-        // Show/hide tooltip and update its position on hover
-        itemElement.addEventListener("mousemove", (event) => {
-            tooltip.style.display = "block";
-            tooltip.style.top = (event.clientY); // Add some offset to avoid overlap with cursor
-            tooltip.style.left = (event.clientX) + "px";
-        });
-
-        itemElement.addEventListener("mouseleave", () => {
-            tooltip.style.display = "none";
-        });
-
-        tailorItemsContainer.appendChild(itemElement);
-        itemStates.push({ item: item, count: 0})
+    const itemContainer = document.getElementById("items");
+    items.forEach(itemCategory => {
+        itemCategory.forEach(item => {
+            const itemElement = document.createElement("div");
+            itemElement.classList.add("item");
+    
+            // Display the equipment name as a string (placeholder for images)
+            itemElement.innerHTML = `<h3>${item.name}</h3>`;
+    
+            // Create buttons for incrementing and decrementing the count
+            const countContainer = document.createElement("div");
+            countContainer.classList.add("count-container");
+    
+            const decrementButton = document.createElement("button");
+            decrementButton.innerHTML = "-";
+            decrementButton.addEventListener("click", () => decrementCount(item));
+            countContainer.appendChild(decrementButton);
+    
+            const countDisplay = document.createElement("span");
+            countDisplay.innerText = "0"; // Initial count
+            countContainer.appendChild(countDisplay);
+    
+            const incrementButton = document.createElement("button");
+            incrementButton.innerHTML = "+";
+            incrementButton.addEventListener("click", () => incrementCount(item));
+            countContainer.appendChild(incrementButton);
+    
+            itemElement.appendChild(countContainer);
+    
+            // Create a floating tooltip for resource items
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
+            itemElement.appendChild(tooltip);
+    
+            item.resourceNeeded.forEach(resource => {
+                const resourceName = resource.resource.name;
+                const resourceQuantity = resource.quantity;
+                const resourceObtain = resource.resource.obtain;
+                const resourceItem = document.createElement("div");
+                resourceItem.innerHTML = `${resourceQuantity} * ${resourceName} : from -> ${resourceObtain}`;
+                tooltip.appendChild(resourceItem);
+            });
+    
+            // Show/hide tooltip and update its position on hover
+            itemElement.addEventListener("mousemove", (event) => {
+                tooltip.style.display = "block";
+                tooltip.style.top = (event.clientY); // Add some offset to avoid overlap with cursor
+                tooltip.style.left = (event.clientX) + "px";
+            });
+    
+            itemElement.addEventListener("mouseleave", () => {
+                tooltip.style.display = "none";
+            });
+    
+            itemContainer.appendChild(itemElement);
+            itemStates.push({ item: item, count: 0})
+        })
     });
 }
 
 function incrementCount(item) {
-    const tailorItemsContainer = document.getElementById("tailor-items");
-    const itemElements = tailorItemsContainer.getElementsByClassName("tailor-item");
+    const itemContainer = document.getElementById("items");
+    const itemElements = itemContainer.getElementsByClassName("item");
 
     for (const itemElement of itemElements) {
         const itemName = itemElement.querySelector("h3").innerText;
@@ -91,8 +113,8 @@ function incrementCount(item) {
 }
 
 function decrementCount(item) {
-    const tailorItemsContainer = document.getElementById("tailor-items");
-    const itemElements = tailorItemsContainer.getElementsByClassName("tailor-item");
+    const itemContainer = document.getElementById("items");
+    const itemElements = itemContainer.getElementsByClassName("item");
 
     for (const itemElement of itemElements) {
         const itemName = itemElement.querySelector("h3").innerText;

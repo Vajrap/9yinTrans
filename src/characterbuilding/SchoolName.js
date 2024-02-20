@@ -1,13 +1,3 @@
-class SchoolInternalName {
-    static wudang_internal_1 = 'wudang1'
-    static wudang_internal_2 = 'wudang2'
-    static wudang_internal_3 = 'wudang3'
-    static wudang_internal_4 = 'wudang4'
-    static wudang_internal_5 = 'wudang5'
-    static wudang_internal_6 = 'wudang6'
-    static wudang_internal_7 = 'wudang7'
-}
-
 class School {
     constructor(name) {
         this.name = name
@@ -102,3 +92,12 @@ class Wudang extends School {
 }
 
 const wudang = new Wudang()
+
+class SchoolInternalName {
+    static wudang_internal_1 = wudang.internals[0].name
+    static wudang_internal_2 = wudang.internals[1].name
+    static wudang_internal_3 = wudang.internals[2].name
+    static wudang_internal_4 = wudang.internals[3].name
+    static wudang_internal_5 = wudang.internals[4].name
+    static wudang_internal_6 = wudang.internals[5].name
+}
