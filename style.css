@@ -75,7 +75,9 @@ nav a {
 
 button {
     margin: 5px;
-    padding: 10px 15px;
+    width: 20px;
+    height: 20px;
+    padding: 1px 1px;
     font-size: 14px;
     text-align: center;
     text-decoration: none;
